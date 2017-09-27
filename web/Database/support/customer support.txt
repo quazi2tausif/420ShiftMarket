@@ -1,0 +1,15 @@
+create table customer_support_client(
+enq_date varchar(20),
+enq_time varchar(20),
+client_id varchar(50),
+client_enq varchar(140),
+admin_rep varchar(10)
+);
+
+create table admin_reply(
+rep_date varchar(20),
+rep_time varchar(20),
+client_id varchar(50),
+client_enq varchar(140),
+admin_rep varchar(140)
+);

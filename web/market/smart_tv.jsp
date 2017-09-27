@@ -1,0 +1,139 @@
+<%-- 
+    Document   : smart_tv
+    Created on : Jun 9, 2017, 12:16:42 PM
+    Author     : 420ShiftMarket
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Laptop Section</title>
+        <style>
+            body{
+                background-color: royalblue;
+            }
+            table{
+                border: 3px solid black;
+                border-spacing: 5px;
+                width: 50%;
+                background-color: darkgoldenrod;
+            }
+            th,td{
+                font-family: cambria;
+                font-size: 18px;
+                padding: 10px;
+                text-align: center;
+                background-color: white;
+            }
+            .b1{
+                border: 3px solid black;
+            }
+            ul{
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333333; 
+            }
+            a{
+                text-decoration: none;
+            }
+            li a {
+                font-family: cambria;
+                font-size: 18px;
+                display: block;
+                color: white;
+                padding: 10px;
+                text-decoration: none;
+            }
+            li{
+                float: left;
+            }
+            li a:hover {
+                background-color: #111111;
+            }
+        </style>
+        <%
+            String ack = (String) request.getSession().getAttribute("ack");
+            if (ack != null) {
+                String s = (String) request.getSession().getAttribute("client_id");
+        %>
+    </head>
+    <body>
+    <center>
+        <a href="../420market.jsp">
+            <img src="../img/420.png" alt="420" style="width:96px;height:96px;"/>
+            <img src="../img/Market.png" alt="Market" style="width:288px;height:96px;"/>
+        </a>
+    </center>
+    <ul>
+        <li><a href="../420market.jsp">Home</a></li>
+            <%
+                if (s != null) {
+            %>
+        <li><a href="../support/customer_care.jsp">24x7 Customer Support</a></li>
+        <li><a href="../client/client_cart.jsp">Your Cart</a></li>
+        <li><a href="../client/client_purchase.jsp">Your Purchase</a></li>
+        <li><a href="about_us.jsp">About Us</a></li>
+        <li style="float: right;"><a href="../ClientLogout">Logout</a></li>
+        <li style="float: right;"><a href="#"><%= s%></a></li>
+            <%
+            } else {
+            %>
+        <li><a href="../client/client_login.jsp?client_path=customersupport">24x7 Customer Support</a></li>
+        <li><a href="../client/client_login.jsp?client_path=cart">Your Cart</a></li>
+        <li><a href="../client/client_login.jsp?client_path=yourpurchase">Your Purchase</a></li>
+        <li><a href="about_us.jsp?client_path=aboutus">About Us</a></li>
+        <li style="float: right;"><a href="../client/client_login.jsp?client_path=smarttv">Login</a></li>
+            <%
+                }
+            %>
+    </ul>
+    <br>
+    <table style="width:100%;">
+        <tr>
+            <th class="b1">TV</th>
+            <th class="b1">Name</th>
+            <th class="b1">Price</th>
+            <th class="b1">TV</th>
+            <th class="b1">Name</th>
+            <th class="b1">Price</th>
+        </tr>
+        <tr>
+            <td><a href="product_display_tv.jsp?pro_id=301">                
+                    <img src="img/smart_tv/sansui.jpeg" alt="sansui" height="139" width="220"/>
+                </a>
+            </td>
+            <td>Sansui 122cm (48) Full HD LED TV</td>
+            <td>Rs. 33,999</td>
+            <td><a href="product_display_tv.jsp?pro_id=302">                
+                    <img src="img/smart_tv/sony.jpeg" alt="sony" height="139" width="220"/>
+                </a>
+            </td>
+            <td>Sony Bravia 123.2cm (49) Full HD Smart LED TV</td>
+            <td>Rs. 76,999</td>
+        </tr>
+        <tr>
+            <td><a href="product_display_tv.jsp?pro_id=303">                
+                    <img src="img/smart_tv/videocon.jpeg" alt="videocon" height="139" width="220"/>
+                </a>
+            </td>
+            <td>Videocon 124cm (50) Full HD LED TV</td>
+            <td>Rs. 38,490</td>
+            <td><a href="product_display_tv.jsp?pro_id=304">                
+                    <img src="img/smart_tv/vu.jpeg" alt="vu" height="139" width="220"/>
+                </a>
+            </td>
+            <td>Vu 127cm (50) Full HD Smart LED TV</td>
+            <td>Rs. 41,999</td>
+        </tr>
+    </table>
+</body>
+<%
+    } else {
+        response.sendRedirect("../acknowledgement.jsp");
+    }
+%>
+</html>

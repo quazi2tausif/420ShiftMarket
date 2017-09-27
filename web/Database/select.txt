@@ -1,0 +1,23 @@
+select * from userinfo;
+
+select * from product_catalog;
+
+select * from product;
+
+select * from product_tech_detail_phone;
+
+select * from product_tech_detail_laptop;
+
+select * from product_tech_detail_tv;
+
+select * from client_add_to_cart;
+
+select * from administrator;
+
+select * from Payment_Through_COD;
+
+select * from Payment_Done_Card;
+
+select * from customer_support_client;
+
+select * from admin_reply;

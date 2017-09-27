@@ -1,0 +1,4 @@
+create table img(
+image_t blob ,
+image_n varchar(20)
+);

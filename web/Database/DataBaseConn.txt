@@ -1,0 +1,235 @@
+create database 420market;
+
+use 420market;
+
+create table userinfo(
+user_id varchar(50) primary key,
+user_password varchar(50) not null,
+user_name varchar(20) not null,
+user_phone varchar(11) not null,
+user_address varchar(100) not null 
+);
+
+insert into userinfo
+values ("qwerty@gmail.com","12345","Khalifa",12343,"mount KK");
+
+create table product_catalog(
+catalog_id varchar(10) primary key,
+catalog varchar(20) not null
+);
+
+insert into product_catalog
+values ("Pro_101", "Smart Phone");
+
+insert into product_catalog
+values ("Pro_201", "Laptop");
+
+insert into product_catalog
+values ("Pro_301", "Smart Television");
+
+create table product(
+catalog_id varchar(7),
+product_id varchar(3) primary key,
+product_name varchar(50) not null,
+product_cost varchar(10) not null,
+product_quantity int(10) not null,
+constraint const_FK foreign key(catalog_id)
+references product_catalog(catalog_id)
+);
+
+insert into product
+values ("Pro_101", "101","Appel Iphone 7", "57000", 50);
+
+insert into product
+values ("Pro_101", "102","Google Pixel XL M7", "57000", 50);
+
+insert into product
+values ("Pro_101", "103","Nokia Lumia 920", "29447", 50);
+
+insert into product
+values ("Pro_101", "104","Motorola Moto Z XT1650", "39999", 50);
+
+insert into product
+values ("Pro_201", "201", "Apple MacBook Air Core i5 5th Gen", "55995", 50);
+
+insert into product
+values ("Pro_201", "202", "HP Core i7 6th Gen", "56990", 50);
+
+insert into product
+values ("Pro_201", "203", "HP APU Quad Core A8 6th Gen", "25990", 50);
+
+insert into product
+values ("Pro_201", "204", "Lenovo 310 Core i5 6th Gen", "41990", 50);
+
+insert into product
+values ("Pro_301", "301", "Sansui 122cm (48) Full HD LED TV", "33999", 50);
+
+insert into product
+values ("Pro_301", "302", "Sony Bravia 123.2cm (49) Full HD Smart LED TV", "76999", 50);
+
+insert into product
+values ("Pro_301", "303", "Videocon 124cm (50) Full HD LED TV", "38490", 50);
+
+insert into product
+values ("Pro_301", "304", "Vu 127cm (50) Full HD Smart LED TV", "41999", 50);
+
+create table product_tech_detail_phone(
+product_id varchar(3)not null,
+os varchar(50),
+ram varchar(10),
+weight varchar(10),
+dimensions varchar(30),
+model_number varchar(10),
+con_tech varchar(500),
+special_features varchar(500),
+camera varchar(10),
+colour varchar(20),
+battery_power varchar(10),
+in_the_box varchar(500),
+constraint phone_FK foreign key(product_id)
+references product(product_id)
+);
+
+insert into product_tech_detail_phone
+values ("101","iOS 10.0.1","2 GB","136 g","13.8 x 0.7 x 6.7 cm","iPhone 7","Wi-Fi 802.11 a/b/g/n/ac, dual-band, hotspot, bluetooth v4.2, A-GPS, GLONASS, USB v2.0, GSM / CDMA / HSPA / EVDO / LTE","Splash, water and dust resistant, Touch ID fingerprint sensor, 3D Touch","7MP","Black","1960","EarPods with Lightning Connector (wired), Lightning to 3.5mm Headphone Jack Adapter, Lightning to USB Cable, USB Power Adapter");
+
+insert into product_tech_detail_phone
+values ("102","Android Nougat","4 GB","168 g","15.5 x 0.7 x 7.6 cm","Pixel XL","Bluetooth, WiFi, Hotspot, GSM, UMTS, WCDMA, 3G, TDS-CDMA, 4G LTE, FDD LTE, TDD LTE","GPSE-mail","8MP","Quite Black","2700","Handset, USB-C 18 W Adapter with USB-PD, USB-C to USB-C Cable, USB-C to USB Standard-A Plug Cable, SIM Tool, Headphones with Rubber Earbuds, OTG Dongle, Safety and Warranty Information, Quick Start Guide, Google Assistant Card and Google Social Promo Card");
+
+insert into product_tech_detail_phone
+values ("103","Microsoft Windows Phone 8, upgradeable to v8.1","1 GB","186 g","13 x 1.1 x 7.1 cm","Lumia 920","LTE band 1(2100), 3(1800), 7(2600), 8(900), 20(800) - RM-821, HSDPA 850 / 900 / 1900 / 2100 - RM-821, RM-820, GSM 850 / 900 / 1800 / 1900 - RM-821, RM-820, GPRS, EDGE, Wi-Fi 802.11 a/b/g/n, dual-band, DLNA, hotspot, Bluetooth v4.0, A2DP, EDR, LE/ aptX after WP8 Denim update, GPS, NFC, FM radio, microUSB v2.0","Video Calls, GPS, Music Player, Video Player, FM Radio, E-mail, Expandable Memory: 32GB","13MP","Quite Black","2000","Mobile Phone, battery, Nokia fast USB charger AC-16, Nokia charging and data cable CA-190CD, Nokia headset WH-208, quick guide and SIM door key");
+
+insert into product_tech_detail_phone
+values ("104","Android","3 GB","163 g","15.6 x 0.7 x 7.6 cm","XT1635-02","Bluetooth, WiFi Hotspot, GSM/GPRS/EDGE (850, 900, 1800, 1900 MHz), UMTS/HSPA+ (850, 900, 1700, 1900, 2100 MHz), 4G LTE (B1, 2, 3, 4, 5, 7, 8, 12, 17, 19, 20, 25, 28, 38, 40, 41)","Dual SIM, Proximity sensor, Accelerometer, Ambient light sensor, Gyroscope, Turbo Power Charging ( 8 hrs of battery life in 15 min), Finger Print Reader, Laser Autofocus, Transforms with Moto Mods, 4K video (30fps), 4G VOLTE","5MP","Black","3510","Handset, Style MOD, Turbo Power Charger, Wired Headset, Warranty Guide, Getting Started Guide, Legal Guide, SIM Removal tool");
+
+create table product_tech_detail_laptop(
+product_id varchar(3)not null,
+brand varchar(15),
+model_num varchar(20),
+color varchar(20),
+height varchar(20),
+width varchar(20),
+scr_size varchar(20),
+dis_res varchar(20),
+weight varchar(10),
+pro_dim varchar(25),
+pros_brand varchar(20),
+pros_typ varchar(20),
+pros_spd varchar(10),
+pros_count varchar(2),
+ram varchar(6),
+mem_typ varchar(10),
+com_mem_typ varchar(20),
+hdd varchar(10),
+aud_dtl varchar(20),
+spk_dis varchar(30),
+grph_cop varchar(20),
+conn_typ varchar(30),
+hdwr_plt varchar(10),
+os varchar(10),
+constraint laptop_FK foreign key(product_id)
+references product(product_id)
+);
+
+insert into product_tech_detail_laptop
+values ("201","Apple","MMGF2HN/A","Silver","17 Millimeters","32.5 Centimeters","13.3 Inches","1440x900","1.4 Kg","22.7 x 32.5 x 1.7 cm","Intel","Core i5","1.6 GHz","2","8 GB","DDR3","PC2-4200","128 GB","Headphones","Stereo speakers","Intel HD 6000","Wi-Fi, Bluetooth-V4","MacOS","Mac OS X");
+
+insert into product_tech_detail_laptop
+values ("202","HP","15-BE002TX","Turbo Silver","24 Millimeters","38.4 Centimeters","15.6 Inches","1366x768","2.2 Kg","25.5 x 38.4 x 2.4 cm","Intel","Core i5 6200U","2.3 GHz","2","8 GB","DDR4","DDR4","1 TB","Dual Speakers","DTS Studio Sound","AMD Radeon R5 M430","Wi-Fi, Bluetooth","PC","DOS");
+
+insert into product_tech_detail_laptop
+values ("203","HP","15-BA025AU","Turbo Silver","24 Millimeters","38.4 Centimeters","15.6 Inches","1366x768","2.2 Kg","25.5 x 38.4 x 2.4 cm","AMD","A6-7310","2 GHz","4","4 GB","DDR3","DDR3 SDRAM","500 GB","Dual Speakers","DTS Studio Sound","Integrated","Wi-Fi, Bluetooth","PC","DOS");
+
+insert into product_tech_detail_laptop
+values ("204","Lenovo","80Q701L2IH","Blackr","23 Millimeters","37.8 Centimeters","15.6 Inches","1920x1080","2.3 Kg","25.5 x 38.4 x 2.4 cm","Intel","Core i7 6500U","3.1 GHz","1","8 GB","DDR3","DDR3 SDRAM","1 TB","Dual Speakers","DTS Studio Sound","ATI Exo Pro R5","Wi-Fi, Bluetooth-V4","PC","DOS");
+
+create table product_tech_detail_tv(
+product_id varchar(3) not null,
+brand varchar(20),
+model varchar(20),
+weight varchar(10),
+pro_dim varchar(30),
+resolution varchar(20),
+dis_tech varchar(4),
+scr_size varchar(20),
+max_dis_res varchar(20),
+audio_watt varchar(20),
+constraint tv_FK foreign key(product_id)
+references product(product_id)
+);
+
+insert into product_tech_detail_tv
+values("301","Sansui","SMX48FH21FA","16 Kg","109.5 x 14 x 64.7 cm","1080p","LED","48 Inches","1080p Full HD","200 Watts");
+
+insert into product_tech_detail_tv
+values("302","Sony","SMX48FH21FA","7 Kg","83 x 51.5 x 15.2 cm","3820 x 2160p","LED","49 Inches","3820 x 2160p","200 Watts");
+
+insert into product_tech_detail_tv
+values("303","Videocon","VMD50FH0ZFA","13 Kg","26 x 110 x 66 cm","1920x1080p","LED","50 Inches","1920*1080","200 Watts");
+
+insert into product_tech_detail_tv
+values("304","Vu","H50K311","20 Kg","128 x 15.4 x 76 cm","1920x1080p","LED","50 Inches","1920*1080","200 Watts");
+
+create table client_add_to_cart(
+cart_date varchar(20),
+cart_time varchar(20),
+client_id varchar(50),
+product_id varchar(3),
+product_name varchar(50),
+product_quantity varchar(2),
+total_amount varchar(12)
+);
+
+create table administrator(
+id_no int(5) not null,
+admin_name varchar(50) not null,
+admin_id varchar(50),
+admin_password varchar(50) not null,
+primary key(id_no,admin_id)
+);
+
+insert into administrator
+values (4325,"Rick Ross","admin","qwerty1234");
+
+create table Payment_Through_COD(
+order_date varchar(30),
+order_time varchar(20),
+order_id varchar(70),
+client_id varchar(50),
+client_name varchar(50),
+product_id varchar(3),
+product_name varchar(50),
+product_quantity varchar(2),
+total_cost varchar(20),
+client_address varchar(100)
+);
+
+create table Payment_Done_Card(
+order_date varchar(30),
+order_time varchar(20),
+order_id varchar(70),
+client_id varchar(50),
+client_name varchar(50),
+product_id varchar(3),
+product_name varchar(50),
+product_quantity varchar(2),
+total_cost varchar(30),
+client_address varchar(100)
+);
+
+create table customer_support_client(
+enq_date varchar(20),
+enq_time varchar(20),
+client_id varchar(50),
+client_enq varchar(140),
+admin_rep varchar(10)
+);
+
+create table admin_reply(
+rep_date varchar(20),
+rep_time varchar(20),
+client_id varchar(50),
+client_enq varchar(140),
+admin_rep varchar(140)
+);
+
